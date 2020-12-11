@@ -1,4 +1,4 @@
-from solution import solution as run
+from report_repair import solution as run
 
 
 def test_report_repair():
