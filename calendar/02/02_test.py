@@ -10,8 +10,3 @@ def test_password_philosophy():
 	result = run(example_data)
 	print(result)
 	assert result == 2
-
-
-if __name__ == "__main__":
-	test_password_philosophy()
-	pass
