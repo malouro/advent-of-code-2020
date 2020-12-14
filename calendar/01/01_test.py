@@ -1,7 +1,6 @@
-from report_repair import solution as run
+from report_repair import solution as solve
 
-
-def test_report_repair():
+def test_report_repair_part1(n = 2):
 	# Sample data given from problem
 	given_example_data = [
 		1721,
@@ -23,10 +22,28 @@ def test_report_repair():
 	]
 
 	# Expected solution given from problem
-	assert run(given_example_data) == 514579
+	assert solve(given_example_data) == 514579
 	
 	# Expected results from own test data
 	acc = 0
 	for case in test_cases:
-		assert run(case) == expectations[acc]
+		assert solve(case, n) == expectations[acc]
+		acc += 1
+
+def test_report_repair_part2(n = 3):
+	test_cases = [
+		[0, 2020, 2019, 1],
+		[1, 2019, 2018, 1],
+		[673, 673, 674]
+	]
+	expectations = [
+		0,
+		2018,
+		305274146
+	]
+
+	# Expected results from own test data
+	acc = 0
+	for case in test_cases:
+		assert solve(case, n) == expectations[acc]
 		acc += 1

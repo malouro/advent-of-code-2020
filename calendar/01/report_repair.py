@@ -1,29 +1,28 @@
+import math
 from os import path
 from sys import argv
+from itertools import combinations, dropwhile
 
-def solution(data, target_num = 2020):
-	for num in data:
-		rest_nums = data.copy()
-		del rest_nums[rest_nums.index(num)]
-
-		for cur_num in rest_nums:
-			if num + cur_num == target_num:
-				answer = num * cur_num
-
-				print(f'Found it!\n{num} + {cur_num} = 2000')
-				print(f'{num} * {cur_num} = {answer}')
-
-				return answer
-
-	return None
+def solution(expenses, n = 2):
+	# "lambda"
+	# dropwhile from itertools
+	# combinations from itertools
+	constraint = lambda x: sum(x) != 2020
+	accepted_values = next(dropwhile(constraint, combinations(expenses, n)))
+	return math.prod(accepted_values)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 	del argv[0]
+	# Defaults to n=2 for the Part One solution
+	n = 2
 
 	if path.isfile(argv[0]):
-		data = list(map(int, open(argv[0]).read().split('\n')))
+		expenses = list(map(int, open(argv[0]).read().split('\n')))
 	else:
-		data = list(map(int, argv))
+		expenses = list(map(int, argv))
+	if argv.__len__() > 1:
+		n = int(argv[1])
 
-	print(solution(data))
+	report = solution(expenses, n)
+	print(report)
