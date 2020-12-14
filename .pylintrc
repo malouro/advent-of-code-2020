@@ -1,0 +1,5 @@
+[DEFAULT]
+ignore-patterns=test_.*?py
+disable=
+	C0114
+indent-string='\t'

@@ -1,4 +1,4 @@
-from report_repair import solution as solve
+from report_repair import solve
 
 def test_report_repair_part1(n = 2):
 	# Sample data given from problem
@@ -23,7 +23,7 @@ def test_report_repair_part1(n = 2):
 
 	# Expected solution given from problem
 	assert solve(given_example_data) == 514579
-	
+
 	# Expected results from own test data
 	acc = 0
 	for case in test_cases:

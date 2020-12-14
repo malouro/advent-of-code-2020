@@ -36,4 +36,3 @@ class TestPasswordPolicyPartTwo:
 		assert check_password(parse('1-3 a: abcde'), self.policy) == True
 		assert check_password(parse('1-3 b: cdefg'), self.policy) == False
 		assert check_password(parse('2-9 c: ccccccccc'), self.policy) == False
-
