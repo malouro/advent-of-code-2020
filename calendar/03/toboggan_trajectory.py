@@ -1,12 +1,14 @@
+import math
 from os import path
 from sys import argv
 
+# List of variable defaults
 SLOPE_R = 3
 SLOPE_D = 1
 TREE_CHAR = '#'
 TREE_COUNT = 0
 
-def toboggan(area_map, pos, tree_count = 0, slope_r = SLOPE_R, slope_d = SLOPE_D):
+def toboggan(mountain_map, pos, slope_r = SLOPE_R, slope_d = SLOPE_D, tree_count = TREE_COUNT):
 	"""
 	Keep tobogganing down the mountain. ⛷
 
@@ -19,14 +21,14 @@ def toboggan(area_map, pos, tree_count = 0, slope_r = SLOPE_R, slope_d = SLOPE_D
 	Recurse if bottom of map isn't reached yet.
 	Once at the bottom - return the `tree_count` value. :)
 	"""
-	width = area_map[pos[0]].__len__() - 1
+	width = mountain_map[pos[0]].__len__() - 1
 
-	if area_map[pos[0]][pos[1]] == TREE_CHAR:
+	if mountain_map[pos[0]][pos[1]] == TREE_CHAR:
 		print('Tree found! 🌲')
 		tree_count += 1
 
 	# Check if at bottom of map
-	if area_map.__len__() <= (pos[0] + slope_d):
+	if mountain_map.__len__() <= (pos[0] + slope_d):
 		# This is when we know to end the toboggan ride
 		return tree_count
 
@@ -39,11 +41,39 @@ def toboggan(area_map, pos, tree_count = 0, slope_r = SLOPE_R, slope_d = SLOPE_D
 
 	# Recurse
 	return toboggan(
-		area_map,
+		mountain_map,
 		new_pos,
+		slope_r,
+		slope_d,
 		tree_count
 	)
 
+def check_list_of_slopes(mountain_map, slopes):
+	"""
+	Returns list of tree collisions for all slopes given
+	"""
+	tree_collisions = []
+	for slope in slopes:
+		tree_collisions.append(
+			toboggan(mountain_map, (0,0), slope[0], slope[1])
+		)
+	return tree_collisions
+
+def solve_part_1(mountain_map):
+	"""Solves part 1, given a map"""
+	return toboggan(mountain_map, (0, 0), 3, 1)
+
+def solve_part_2(mountain_map):
+	"""Solves part 2, given a map and a list of slopes"""
+	return math.prod(
+		check_list_of_slopes(mountain_map, (
+			(1, 1),
+			(3, 1),
+			(5, 1),
+			(7, 1),
+			(1, 2)
+		))
+	)
 
 if __name__ == "__main__":
 	del argv[0]
@@ -56,4 +86,5 @@ if __name__ == "__main__":
 	else:
 		raise Exception('No args given.')
 
-	print(toboggan(data, [0, 0]))
+	print(solve_part_1(data))
+	print(solve_part_2(data))
