@@ -28,7 +28,6 @@ MAX_HEIGHT_IN = 76
 
 POSSIBLE_EYE_COLORS = 'amb|blu|brn|gry|grn|hzl|oth'
 
-
 def parse_field(field):
 	"""
 	Parses a field from the passport.
@@ -73,12 +72,13 @@ def parse_passport(passport):
 	"""
 	data_points = re.split(r'[\n\s]+', passport)
 	fields = list(map(lambda x: ( x[:3], x[4:] ), data_points))
-
+	cid_el = None
 	i = 0
+
 	for field in fields:
-		# Ignore field if type is "cid" by removing from list
+		# Remember where `cid` was
 		if field[0] == 'cid':
-			del fields[i]
+			cid_el = field
 			continue
 		# Parse field and its value
 		if not parse_field(field):
@@ -86,9 +86,12 @@ def parse_passport(passport):
 			return False
 		i += 0
 
+	# Remove `cid` if it exists
+	if cid_el is not None:
+		fields.remove(cid_el)
+
 	# Now check that the fields supplied match requirements
 	fields_given = sorted(list(map(lambda x: x[0], fields)))
-
 	valid_passport = fields_given == REQUIRED_FIELDS
 
 	if valid_passport:

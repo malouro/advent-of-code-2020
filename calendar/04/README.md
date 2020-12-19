@@ -8,7 +8,6 @@ Due to some questionable network security, you realize you might be able to solv
 
 The automatic passport scanners are slow because they're having trouble detecting which passports have all required fields. The expected fields are as follows:
 
-
 - `byr` (Birth Year)
 - `iyr` (Issue Year)
 - `eyr` (Expiration Year)
@@ -17,7 +16,6 @@ The automatic passport scanners are slow because they're having trouble detectin
 - `ecl` (Eye Color)
 - `pid` (Passport ID)
 - `cid` (Country ID)
-
 
 Passport data is validated in batch files (your puzzle input). Each passport is represented as a sequence of key:value pairs separated by spaces or newlines. Passports are separated by blank lines.
 
@@ -41,13 +39,13 @@ iyr:2011 ecl:brn hgt:59in
 
 The first passport is valid - all eight fields are present. The second passport is invalid - it is missing hgt (the Height field).
 
-The third passport is interesting; the only missing field is cid, so it looks like data from North Pole Credentials, not a passport at all! Surely, nobody would mind if you made the system temporarily ignore missing cid fields. Treat this "passport" as valid.
+The third passport is interesting; the only missing field is cid, so it looks like data from North Pole Credentials, not a passport at all! Surely, nobody would mind if you made the system temporarily ignore missing `cid` fields. Treat this "passport" as valid.
 
 The fourth passport is missing two fields, cid and byr. Missing cid is fine, but missing any other field is not, so this passport is invalid.
 
 According to the above rules, your improved system would report 2 valid passports.
 
-Count the number of valid passports - those that have all required fields. Treat cid as optional. In your batch file, how many passports are valid?
+Count the number of valid passports - those that have all required fields. Treat `cid` as optional. In your batch file, how many passports are valid?
 
 > **SOLUTION**: `230`
 
@@ -64,8 +62,8 @@ byr (Birth Year) - four digits; at least 1920 and at most 2002.
 iyr (Issue Year) - four digits; at least 2010 and at most 2020.
 eyr (Expiration Year) - four digits; at least 2020 and at most 2030.
 hgt (Height) - a number followed by either cm or in:
-If cm, the number must be at least 150 and at most 193.
-If in, the number must be at least 59 and at most 76.
+If `cm`, the number must be at least 150 and at most 193.
+If `in`, the number must be at least 59 and at most 76.
 hcl (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
 ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
 pid (Passport ID) - a nine-digit number, including leading zeroes.
@@ -131,4 +129,4 @@ iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719
 
 Count the number of valid passports - those that have all required fields and valid values. Continue to treat `cid` as optional. In your batch file, how many passports are valid?
 
-> **SOLUTION**: `???`
+> **SOLUTION**: `156`
