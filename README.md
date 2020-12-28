@@ -6,6 +6,12 @@ Puzzle solving @ <a href="https://adventofcode.com/2020">Advent of Code</a>
 
 ## Running
 
+Installing dependencies (needed for pre-commit checks and running tests)
+
+```bash
+pip install -r requirements-dev.txt
+```
+
 > WIP
 
 ```bash
