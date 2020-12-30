@@ -14,7 +14,7 @@ def solve(expenses, n_value = 2, target_num = TARGET_NUMBER):
 	return math.prod(accepted_values)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 	del argv[0]
 	# Defaults to n=2
 	N = 2

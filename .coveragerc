@@ -1,2 +1,7 @@
 [run]
 omit = **/test*
+
+[report]
+exclude_lines =
+	if __name__ == "__main__":
+	if __name__ == '__main__':

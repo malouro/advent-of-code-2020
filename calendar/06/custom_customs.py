@@ -51,7 +51,7 @@ def solution(input_data, get_same_responses_only=False):
 	If `get_same_responses_only` is `True` this will return the part two solution.
 	"""
 	return reduce_responses(
-		parse_data(open(input_data).read()),
+		parse_data(input_data),
 		get_same_responses_only
 	)
 
@@ -63,6 +63,6 @@ if __name__ == "__main__":
 	solution_part = int(argv[1]) if argv.__len__() > 1 else 1
 
 	if solution_part == 1:
-		print(solution(input_data_file, False))
+		print(solution(open(input_data_file).read(), False))
 	else:
-		print(solution(input_data_file, True))
+		print(solution(open(input_data_file).read(), True))
