@@ -12,12 +12,6 @@ Installing dependencies (needed for pre-commit checks and running tests)
 pip install -r requirements-dev.txt
 ```
 
-> WIP
-
-```bash
-python aoc {day} ({input_file?})
-```
-
 ## Testing
 
 Test files exist alongside their corresponding puzzle solution, with the naming convention of `test_{day}.py` (ie: `test_01.py`, etc.)
