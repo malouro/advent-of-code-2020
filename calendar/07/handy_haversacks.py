@@ -20,18 +20,20 @@ def parse_data(data):
 	"""
 	bags_dict = {}
 	bags = data.split('\n')
+
 	for bag in bags:
 		bag = bag.replace(' bags', '').replace('.', '').split(' contain ')
 		bags_dict[bag[0]] = bag[1]
+
 	return bags_dict
 
-def solution_part_one(input_data):
+def solution_part_one(input_data, target_bag = 'shiny gold'):
 	"""
 	Gives solution for part 1
 	"""
 	bags_dict = parse_data(input_data)
 
-	get_parent_bags('shiny gold', bags_dict)
+	get_parent_bags(target_bag, bags_dict)
 
 	return bags_set
 
